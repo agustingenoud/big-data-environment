@@ -13,6 +13,7 @@ services:
       - bds-network
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
+      - /Users/agustingenoud/101/big-data-solution-main/code/data:/hadoop/dfs/data/
     environment:
       - CLUSTER_NAME=test
     env_file:
@@ -24,7 +25,7 @@ services:
     build: ./hadoop/datanode
     volumes:
       - hadoop_datanode:/hadoop/dfs/data
-      - /Users/agustingenoud/101/big-data-solution-main/jupyter/workspace/data:/hadoop/dfs/data/add-data
+      - /Users/agustingenoud/101/big-data-solution-main/code/data:/hadoop/dfs/data/add-data
     networks:
       - bds-network
     environment:
@@ -120,9 +121,7 @@ services:
       - bds-network
     volumes:
       - shared-workspace:/opt/workspace
-      - /Users/agustingenoud/101/big-data-solution-main/jupyter/workspace/add-data:/workspace/add-data
       - ./code:/workspace/code
-
     ####### PostgreSQL
   postgres:
     container_name: postgres
